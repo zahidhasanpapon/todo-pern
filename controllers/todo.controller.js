@@ -1,4 +1,5 @@
 const pool = require("../configs/conn");
+const path = require("path");
 
 // Create a new todo
 const createTodo = async (req, res) => {
@@ -74,4 +75,16 @@ const deleteTodo = async (req, res) => {
   }
 };
 
-module.exports = { createTodo, getTodos, getOneTodo, updateTodo, deleteTodo };
+// Catch all
+const catchAll = (req, res) => {
+  res.sendFile(path.join(__dirname, "client/build/index.html"));
+};
+
+module.exports = {
+  createTodo,
+  getTodos,
+  getOneTodo,
+  updateTodo,
+  deleteTodo,
+  catchAll,
+};
